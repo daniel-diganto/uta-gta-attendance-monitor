@@ -3,21 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>UTA/GTA Attendance Monitor –Department of English,East West University</title>
- <meta name="google-site-verification" content="35DwggFkgm6LjKgQoJhbKEkDf17m5lUpZ5hxp22W8a0" /> 
-<meta name="description" content="UTA/GTA Attendance Monitor: the digital check-in, leave and attendance system for teaching assistants of the Department of English, East West University.">
+<title>UTA/GTA Attendance Monitor | East West University</title>
+<meta name="description" content="UTA/GTA Attendance Monitor of East West University: how to check in and out, grace period rules, leave guidelines, and today's TA office hours.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://daniel-diganto.github.io/uta-gta-attendance-monitor/-URL-HERE">
+<link rel="canonical" href="https://daniel-diganto.github.io/uta-gta-attendance-monitor/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="UTA/GTA Attendance Monitor">
-<meta property="og:title" content="UTA/GTA Attendance Monitor – East West University">
-<meta property="og:description" content="Digital check-in, leave and attendance monitoring for UTAs and GTAs of the Department of English, East West University.">
-<meta property="og:url" content="https://daniel-diganto.github.io/uta-gta-attendance-monitor/-URL-HERE">
+<meta property="og:title" content="UTA/GTA Attendance Monitor | East West University">
+<meta property="og:description" content="Check-in guidelines, grace period rules and today's office hours for UTAs and GTAs of the Department of English, East West University.">
+<meta property="og:url" content="https://daniel-diganto.github.io/uta-gta-attendance-monitor/">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%93%3C/text%3E%3C/svg%3E">
 <style>
   * { box-sizing: border-box; }
-  html { color-scheme: light; }
+  html { color-scheme: light; scroll-behavior: smooth; }
   body {
     font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     padding: 28px 24px 36px;
@@ -40,7 +39,7 @@
     font-weight: 600;
   }
   .brand hr { border: none; border-top: 1px solid #e2e2e2; margin: 16px 0 0; }
-  h2 { font-size: 24px; margin: 22px 0 8px; text-align: center; color: #222; }
+  h2.tagline { font-size: 24px; margin: 22px 0 8px; text-align: center; color: #222; }
   .muted { color: #666; font-size: 16px; text-align: center; margin: 0 0 6px; }
   .cta {
     display: block;
@@ -56,37 +55,95 @@
     border-radius: 10px;
   }
   .cta:hover { background: #1b4180; }
-  .cta:focus-visible, a:focus-visible { outline: 3px solid #1a7f4b; outline-offset: 3px; }
+  .cta:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px solid #1a7f4b; outline-offset: 3px; }
   .note { font-size: 14px; color: #777; margin: 10px 0 0; text-align: center; }
-  .section-title {
-    margin: 34px 0 12px;
+  .jump { text-align: center; font-size: 15px; margin: 12px 0 0; color: #aaa; }
+  .jump a { color: #14315e; font-weight: 600; text-decoration: none; padding: 0 8px; }
+  h2.section-title {
+    margin: 30px 0 12px;
     padding-top: 18px;
     border-top: 1px solid #e2e2e2;
     font-size: 14px;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: #888;
+    scroll-margin-top: 12px;
   }
+  details.g { border: 1px solid #e2e2e2; border-radius: 10px; margin: 0 0 10px; background: #ffffff; }
+  details.g summary {
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #14315e;
+    list-style: none;
+  }
+  details.g summary::-webkit-details-marker { display: none; }
+  details.g summary::after { content: "\25B8"; float: right; color: #888; }
+  details.g[open] summary::after { content: "\25BE"; }
+  .gbody { padding: 0 16px 16px; font-size: 15.5px; color: #444; }
+  .gbody ol, .gbody ul { margin: 0 0 8px; padding-left: 22px; }
+  .gbody li { margin: 0 0 8px; }
+  .gbody p { margin: 0 0 10px; color: #444; font-size: 15.5px; }
+  .gbody strong { color: #222; }
+  table.rules { width: 100%; border-collapse: collapse; font-size: 15px; }
+  table.rules th, table.rules td { text-align: left; vertical-align: top; padding: 9px 10px 9px 0; border-bottom: 1px solid #eeeeee; }
+  table.rules th { width: 36%; color: #14315e; font-weight: 600; }
+  table.rules tr:last-child th, table.rules tr:last-child td { border-bottom: none; }
+  figure.shot { margin: 12px 0 4px; text-align: center; }
+  figure.shot img { display: block; width: 100%; max-width: 270px; margin: 0 auto; border: 1px solid #e2e2e2; border-radius: 12px; }
+  figure.shot figcaption { font-size: 13px; color: #888; margin-top: 6px; }
   .box { border-radius: 10px; padding: 14px 16px; margin: 0 0 12px; }
-  .box strong { display: block; font-size: 17px; margin-bottom: 2px; }
-  .box span { display: block; font-size: 15px; color: #444; }
+  .box strong { display: block; font-size: 17px; margin-bottom: 4px; }
+  .box ul { margin: 4px 0 0; padding-left: 20px; }
+  .box li { font-size: 15px; color: #444; margin: 0 0 6px; }
   .box.green { background: #e6f5ea; }
   .box.green strong { color: #16643c; }
-  .box.gold { background: #f0ece0; }
-  .box.gold strong { color: #6f560f; }
-  .box.navy { background: #eef2f8; }
-  .box.navy strong { color: #14315e; }
-  .box.amber { background: #fff6e0; }
-  .box.amber strong { color: #7c5200; }
   .box.red { background: #fbe9e7; }
   .box.red strong { color: #9c3226; }
+  .sr { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .search input[type=search] {
+    width: 100%;
+    padding: 14px;
+    font-size: 17px;
+    border-radius: 10px;
+    border: 1px solid #cccccc;
+    font-family: inherit;
+    -webkit-appearance: none;
+  }
+  .search input[type=search]:focus { outline: none; border-color: #14315e; }
+  .search button {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    background: #14315e;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .search button:disabled { background: #b5bccb; cursor: default; }
+  .date { color: #888; font-size: 14px; text-align: center; margin: 14px 0 0; }
+  .msg { color: #666; font-size: 15px; text-align: center; margin: 12px 0 0; }
+  .result { border: 1px solid #e2e2e2; border-radius: 10px; padding: 12px 14px; margin-top: 10px; }
+  .rname { font-weight: 700; font-size: 17px; color: #222; }
+  .rhours { font-size: 15px; color: #555; margin: 2px 0 8px; }
+  .chip { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 14px; font-weight: 600; background: #eeeeee; color: #555; }
+  .chip.ok { background: #e6f5ea; color: #16643c; }
+  .chip.leave { background: #f0ece0; color: #6f560f; }
+  .chip.early { background: #fff6e0; color: #7c5200; }
+  .chip.exam { background: #eef2f8; color: #14315e; }
   .banner {
     background: #eef2f8;
     color: #2a4d78;
     border-radius: 8px;
     padding: 12px 14px;
     font-size: 15px;
-    margin-top: 22px;
+    margin-top: 30px;
     text-align: center;
   }
   .footer-contact {
@@ -113,13 +170,146 @@
   </header>
 
   <main>
+    <h2 class="tagline">Check in, check out and apply for leave.</h2>
     <p class="muted">UTA/GTA Attendance Monitor is the digital system used by the Department of English to record the office-hour attendance of Undergraduate and Graduate Teaching Assistants, handle leave applications, and monitor attendance.</p>
 
-    <a class="cta" href="https://script.google.com/a/macros/std.ewubd.edu/s/AKfycbweaR_eQzXjLAidTnnkVsekusg33TtajE4MOu6D3ZlQNYxbmOGhBnzZqq5FZTMUcr0x/exec" rel="noopener">Open the attendance portal</a>
+    <a class="cta" href="https://script.google.com/a/macros/std.ewubd.edu/s/AKfycbweaR_eQzXjLAidTnnkVsekusg33TtajE4MOu6D3ZlQNYxbmOGhBnzZqq5FZTMUcr0x/exec" rel="noopener">Open the attendance app</a>
     <p class="note">Sign in with your East West University Google account.</p>
+    <p class="jump"><a href="#guidelines">Guidelines</a>|<a href="#find-ta">Find a TA</a></p>
 
-  
-    <div class="banner">Access is limited to registered UTAs, GTAs and TA coordinators of the Department of English.</div>
+    <section id="guidelines">
+      <h2 class="section-title">Guidelines for TAs</h2>
+
+      <details class="g" open>
+        <summary>How to check in and check out</summary>
+        <div class="gbody">
+          <ol>
+            <li>Open the attendance app with the blue button above, or scan the QR code at the office. Sign in with your East West University Google account.</li>
+            <li>Allow location access when your browser asks. You must be inside the office area.</li>
+            <li>Tap <strong>Check In</strong>. Your status is recorded as On Time or Late (see the time rules).</li>
+            <li>Stay for your scheduled office hours. A timer on the page shows how long you have been checked in.</li>
+            <li>When your last slot ends, tap <strong>Check Out</strong> while you are still at the office.</li>
+          </ol>
+          <figure class="shot">
+            <img src="shot-checkin.png" alt="The check-in page of the attendance app" loading="lazy" onerror="this.parentNode.style.display='none'">
+            <figcaption>The check-in page</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="shot-checkout.png" alt="The attendance app after checking in, showing the timer and the Check Out button" loading="lazy" onerror="this.parentNode.style.display='none'">
+            <figcaption>After checking in: the timer and the Check Out button</figcaption>
+          </figure>
+        </div>
+      </details>
+
+      <details class="g">
+        <summary>Time rules and grace periods</summary>
+        <div class="gbody">
+          <table class="rules">
+            <tr><th scope="row">Check-in opens</th><td>20 minutes before your first slot starts</td></tr>
+            <tr><th scope="row">On time</th><td>Check in up to 10 minutes after your first slot starts</td></tr>
+            <tr><th scope="row">Late</th><td>Check in more than 10 minutes after your first slot starts</td></tr>
+            <tr><th scope="row">Check-in closes</th><td>When your last slot ends</td></tr>
+            <tr><th scope="row">Check-out</th><td>Tap Check Out after your last slot ends. Checking out more than 10 minutes before it ends is recorded as Left Early</td></tr>
+            <tr><th scope="row">Time counted</th><td>Only time within your scheduled hours is counted. Time after the scheduled end is not counted</td></tr>
+            <tr><th scope="row">Several slots in a day</th><td>Check in once at the start of the first slot and check out once after the last slot</td></tr>
+            <tr><th scope="row">Leave applications</th><td>Allowed until 10 minutes after your first slot starts</td></tr>
+            <tr><th scope="row">Location</th><td>You must be at the office point, within about 10 metres, to check in or out</td></tr>
+            <tr><th scope="row">Email reminders</th><td>You receive a reminder if you have not checked in after the grace period, and another if you have not checked out 10 minutes after your last slot ends</td></tr>
+          </table>
+        </div>
+      </details>
+
+      <details class="g">
+        <summary>Applying for leave</summary>
+        <div class="gbody">
+          <ol>
+            <li>Open the attendance app and tap <strong>Apply for Leave</strong>. It is available until 10 minutes after your slot starts.</li>
+            <li>Write your reason in a few keywords and tap <strong>Send Application</strong>.</li>
+            <li>The coordinators receive your application by email and approve or reject it.</li>
+            <li>You receive an email with the decision.</li>
+          </ol>
+          <ul>
+            <li><strong>Pending:</strong> wait for the decision. Check-in is not available while it is pending.</li>
+            <li><strong>Approved:</strong> the day is recorded as Leave.</li>
+            <li><strong>Rejected:</strong> you are expected to attend. Check in as soon as you can, and the late rules apply. If you do not check in, the day is recorded as Absent.</li>
+          </ul>
+          <figure class="shot">
+            <img src="shot-leave.png" alt="The leave application form in the attendance app" loading="lazy" onerror="this.parentNode.style.display='none'">
+            <figcaption>The leave application form</figcaption>
+          </figure>
+        </div>
+      </details>
+
+      <details class="g">
+        <summary>What each status means</summary>
+        <div class="gbody">
+          <table class="rules">
+            <tr><th scope="row">On Time</th><td>Checked in within the grace period</td></tr>
+            <tr><th scope="row">Late</th><td>Checked in after the grace period</td></tr>
+            <tr><th scope="row">Left Early</th><td>Checked out before the last slot ended, beyond the grace period</td></tr>
+            <tr><th scope="row">Absent</th><td>No check-in recorded and no approved leave</td></tr>
+            <tr><th scope="row">Leave</th><td>Leave approved by the coordinators</td></tr>
+            <tr><th scope="row">Exam Duty</th><td>Listed for exam duty. You can check in and out at any time that day, with no late or early marking</td></tr>
+          </table>
+        </div>
+      </details>
+
+      <details class="g">
+        <summary>Do's and don'ts</summary>
+        <div class="gbody">
+          <div class="box green">
+            <strong>Do</strong>
+            <ul>
+              <li>Check in and check out yourself, at the office.</li>
+              <li>Use your own East West University Google account.</li>
+              <li>Allow location access and keep it on High accuracy.</li>
+              <li>Open the app in Chrome or Safari, not inside another app.</li>
+              <li>Apply for leave early, with a clear and short reason.</li>
+              <li>Check out before you leave the office.</li>
+              <li>Tell the coordinators if something goes wrong.</li>
+            </ul>
+          </div>
+          <div class="box red">
+            <strong>Do not</strong>
+            <ul>
+              <li>Check in or out for another TA, or let anyone use your account.</li>
+              <li>Use fake-location apps.</li>
+              <li>Sign in with a personal Gmail account.</li>
+              <li>Forget to check out.</li>
+              <li>Wait until the grace period is over to apply for leave.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+
+      <details class="g">
+        <summary>Quick fixes</summary>
+        <div class="gbody">
+          <ul>
+            <li><strong>Location is blocked:</strong> allow location for your browser in the phone settings, turn on High accuracy, then reload the page.</li>
+            <li><strong>Blank or white page:</strong> open the app directly in Chrome or Safari, not inside WhatsApp, Gmail or another app. Make sure only your university account is signed in.</li>
+            <li><strong>Wrong account:</strong> use a private window or a browser profile that has only your East West University account.</li>
+            <li><strong>The system is busy:</strong> wait a moment and tap again.</li>
+            <li><strong>You are too far from the office:</strong> move closer to the office point and try again.</li>
+            <li><strong>Still stuck:</strong> contact the coordinators using the email at the bottom of this page.</li>
+          </ul>
+        </div>
+      </details>
+    </section>
+
+    <section id="find-ta">
+      <h2 class="section-title">Find a TA's office hours</h2>
+      <p class="muted">Type a TA's name to see today's office hours and a basic status.</p>
+      <form class="search" id="searchForm" autocomplete="off">
+        <label class="sr" for="q">TA name</label>
+        <input type="search" id="q" name="q" maxlength="40" placeholder="Type a name, for example Daniel">
+        <button type="submit" id="searchBtn">Search</button>
+      </form>
+      <div id="results" aria-live="polite"></div>
+      <p class="note">Only today's office hours and a basic status are shown. Contact details and leave reasons are never shown.</p>
+    </section>
+
+    <div class="banner">The attendance app is limited to registered UTAs, GTAs and TA coordinators of the Department of English. Other visitors are asked to sign in and cannot open it.</div>
   </main>
 
   <footer>
@@ -129,7 +319,105 @@
     <div class="credit">
       Developed by <span class="dev">Daniel Masud Diganto</span>
       <span class="ver">UTA/GTA Digital Attendance Monitor · Department of English, East West University</span>
+      <span class="ver">Last updated: October 2026</span>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var SEARCH_URL = 'https://script.google.com/a/macros/std.ewubd.edu/s/AKfycbyLFxXs1hcpaZAwHZN-9zuLI51dmHiH8UhAf0G63uczgFToLuXOaxDXdc4Wgzg7KZCe/exec';
+      var form = document.getElementById('searchForm');
+      var input = document.getElementById('q');
+      var button = document.getElementById('searchBtn');
+      var out = document.getElementById('results');
+      var seq = 0;
+
+      function esc(value) {
+        return String(value).replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+      }
+
+      function show(html) {
+        out.innerHTML = html;
+      }
+
+      function message(text) {
+        show('<p class="msg">' + esc(text) + '</p>');
+      }
+
+      function chipClass(status) {
+        if (status === 'Checked in' || status === 'Checked out') return 'chip ok';
+        if (status === 'On leave') return 'chip leave';
+        if (status === 'Left early') return 'chip early';
+        if (status === 'On exam duty') return 'chip exam';
+        return 'chip';
+      }
+
+      function render(data) {
+        if (!data || !data.ok) {
+          message((data && data.message) || 'Search is unavailable right now. Please try again later.');
+          return;
+        }
+        var html = '<p class="date">' + esc(data.date) + '</p>';
+        if (data.message) html += '<p class="msg">' + esc(data.message) + '</p>';
+        (data.results || []).forEach(function (r) {
+          html += '<div class="result"><div class="rname">' + esc(r.name) + '</div>';
+          if (r.hours) html += '<div class="rhours">' + esc(r.hours) + '</div>';
+          if (r.status) html += '<span class="' + chipClass(r.status) + '">' + esc(r.status) + '</span>';
+          html += '</div>';
+        });
+        show(html);
+      }
+
+      function search(q) {
+        if (SEARCH_URL.indexOf('http') !== 0) {
+          message('Search is not available yet.');
+          return;
+        }
+        var id = ++seq;
+        var cb = '__taSearch' + id + '_' + new Date().getTime();
+        var script = document.createElement('script');
+        var done = false;
+        var timer;
+
+        function finish() {
+          done = true;
+          clearTimeout(timer);
+          button.disabled = false;
+          try { delete window[cb]; } catch (e) { window[cb] = undefined; }
+          if (script.parentNode) script.parentNode.removeChild(script);
+        }
+
+        function fail() {
+          if (done) return;
+          finish();
+          if (id === seq) message('Search is unavailable right now. Please try again later.');
+        }
+
+        window[cb] = function (data) {
+          if (done) return;
+          finish();
+          if (id === seq) render(data);
+        };
+        script.onerror = fail;
+        timer = setTimeout(fail, 15000);
+        button.disabled = true;
+        script.src = SEARCH_URL + (SEARCH_URL.indexOf('?') === -1 ? '?' : '&') + 'mode=search&q=' + encodeURIComponent(q) + '&callback=' + cb;
+        document.body.appendChild(script);
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var q = input.value.replace(/\s+/g, ' ').trim();
+        if (q.length < 3) {
+          message('Please type at least 3 letters of the name.');
+          return;
+        }
+        message('Searching...');
+        search(q);
+      });
+    })();
+  </script>
 </body>
 </html>
