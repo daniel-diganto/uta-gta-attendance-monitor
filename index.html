@@ -196,7 +196,7 @@
 
     <a class="cta" href="https://script.google.com/a/macros/std.ewubd.edu/s/AKfycbweaR_eQzXjLAidTnnkVsekusg33TtajE4MOu6D3ZlQNYxbmOGhBnzZqq5FZTMUcr0x/exec" rel="noopener">Open the attendance app</a>
     <p class="note">Sign in with your East West University Google account.</p>
-    <p class="jump"><a href="#guidelines">Guidelines</a><a href="#board">Today</a><a href="#find-ta">Find a TA</a><a href="#privacy">Privacy</a></p>
+    <p class="jump"><a href="#guidelines">Guidelines</a><a href="#board">Today</a><a href="#find-ta">Find a TA</a><a href="#spot-check">Spot check</a><a href="#privacy">Privacy</a></p>
 
     <section id="guidelines">
       <h2 class="section-title">Guidelines for TAs</h2>
@@ -293,7 +293,7 @@
           <div class="box red">
             <strong>Do not</strong>
             <ul>
-              <li>Check in or out for another TA, or let anyone use your account.</li
+              <li>Check in or out for another TA, or let anyone use your account.</li>
               <li>Sign in with a personal Gmail account.</li>
               <li>Forget to check out.</li>
               <li>Wait until the grace period is over to apply for leave.</li>
@@ -347,8 +347,15 @@
     <section id="find-ta">
       <h2 class="section-title">Find a TA's office hours</h2>
       <p class="muted">Search a TA by name to see today's office hours and a basic status.</p>
-      <a class="cta" href="https://script.google.com/a/macros/std.ewubd.edu/s/AKfycbweaR_eQzXjLAidTnnkVsekusg33TtajE4MOu6D3ZlQNYxbmOGhBnzZqq5FZTMUcr0x/exec?mode=board" rel="noopener">Open Find a TA</a>
+      <a class="cta" href="https://script.google.com/a/macros/std.ewubd.edu/s/AKfycbweaR_eQzXjLAidTnnkVsekusg33TtajE4MOu6D3ZlQNYxbmOGhBnzZqq5FZTMUcr0x/exec?mode=board&amp;view=find" rel="noopener">Open Find a TA</a>
       <p class="note">Sign in with your @std.ewubd.edu or @ewubd.edu account to see the details. Other accounts cannot open it.</p>
+    </section>
+
+    <section id="spot-check">
+      <h2 class="section-title">Spot check</h2>
+      <p class="muted">For TA coordinators and listed faculty members. See which TAs have an office hour right now and mark each one as present, not at desk or on leave.</p>
+      <a class="cta" href="https://script.google.com/a/macros/std.ewubd.edu/s/AKfycbweaR_eQzXjLAidTnnkVsekusg33TtajE4MOu6D3ZlQNYxbmOGhBnzZqq5FZTMUcr0x/exec?mode=spotcheck" rel="noopener">Open the spot check</a>
+      <p class="note">Sign in with your @std.ewubd.edu or @ewubd.edu account. Only coordinators and faculty members listed for spot checks can open it.</p>
     </section>
 
     <section id="privacy">
@@ -381,7 +388,7 @@
 
   <script>
     (function () {
-      var COUNTER =danieldiganto;
+      var COUNTER = 'danieldiganto';
       if (COUNTER.indexOf('YOUR-') !== 0) {
         var gc = document.createElement('script');
         gc.async = true;
