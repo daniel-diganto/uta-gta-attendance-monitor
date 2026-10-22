@@ -4,19 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UTA/GTA Attendance Monitor | East West University</title>
-<meta name="description" content="UTA/GTA Attendance Monitor of East West University: how to check in and out, grace period rules, leave guidelines, and today's TA office hours.">
+<meta name="description" content="UTA/GTA Attendance Monitor of East West University: how to check in and out, grace period rules, leave guidelines, and today's TA attendance.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://daniel-diganto.github.io/uta-gta-attendance-monitor/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="UTA/GTA Attendance Monitor">
 <meta property="og:title" content="UTA/GTA Attendance Monitor | East West University">
-<meta property="og:description" content="Check-in guidelines, grace period rules and today's office hours for UTAs and GTAs of the Department of English, East West University.">
+<meta property="og:description" content="Check-in guidelines, grace period rules and today's attendance for UTAs and GTAs of the Department of English, East West University.">
 <meta property="og:url" content="https://daniel-diganto.github.io/uta-gta-attendance-monitor/">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://daniel-diganto.github.io/uta-gta-attendance-monitor/preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="UTA/GTA Attendance Monitor, Department of English, East West University">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://daniel-diganto.github.io/uta-gta-attendance-monitor/preview.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%93%3C/text%3E%3C/svg%3E">
 <style>
   * { box-sizing: border-box; }
   html { color-scheme: light; scroll-behavior: smooth; }
+  [hidden] { display: none !important; }
   body {
     font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     padding: 28px 24px 36px;
@@ -41,6 +47,13 @@
   .brand hr { border: none; border-top: 1px solid #e2e2e2; margin: 16px 0 0; }
   h2.tagline { font-size: 24px; margin: 22px 0 8px; text-align: center; color: #222; }
   .muted { color: #666; font-size: 16px; text-align: center; margin: 0 0 6px; }
+  .today { border-radius: 8px; padding: 10px 14px; font-size: 15px; margin-top: 18px; text-align: center; }
+  .today strong { display: block; font-size: 14px; margin-bottom: 2px; }
+  .today.regular { background: #e6f5ea; color: #16643c; }
+  .today.swap { background: #eef2f8; color: #14315e; }
+  .today.holiday { background: #fff6e0; color: #7c5200; }
+  .notice { background: #f0ece0; color: #5d480d; border-radius: 8px; padding: 10px 14px; margin-top: 10px; font-size: 15px; text-align: center; }
+  .notice strong { display: block; font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 2px; }
   .cta {
     display: block;
     width: 100%;
@@ -57,8 +70,9 @@
   .cta:hover { background: #1b4180; }
   .cta:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px solid #1a7f4b; outline-offset: 3px; }
   .note { font-size: 14px; color: #777; margin: 10px 0 0; text-align: center; }
-  .jump { text-align: center; font-size: 15px; margin: 12px 0 0; color: #aaa; }
-  .jump a { color: #14315e; font-weight: 600; text-decoration: none; padding: 0 8px; }
+  .jump { text-align: center; font-size: 15px; margin: 12px 0 0; }
+  .jump a { color: #14315e; font-weight: 600; text-decoration: none; padding: 0 10px; }
+  .jump a + a { border-left: 1px solid #cccccc; }
   h2.section-title {
     margin: 30px 0 12px;
     padding-top: 18px;
@@ -129,14 +143,22 @@
   .search button:disabled { background: #b5bccb; cursor: default; }
   .date { color: #888; font-size: 14px; text-align: center; margin: 14px 0 0; }
   .msg { color: #666; font-size: 15px; text-align: center; margin: 12px 0 0; }
+  .summary { text-align: center; margin: 10px 0 4px; }
+  .sum { display: inline-block; margin: 0 4px 8px; padding: 5px 12px; border-radius: 999px; background: #eef2f8; color: #14315e; font-size: 14px; }
+  .sum b { font-size: 16px; }
   .result { border: 1px solid #e2e2e2; border-radius: 10px; padding: 12px 14px; margin-top: 10px; }
   .rname { font-weight: 700; font-size: 17px; color: #222; }
   .rhours { font-size: 15px; color: #555; margin: 2px 0 8px; }
   .chip { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 14px; font-weight: 600; background: #eeeeee; color: #555; }
   .chip.ok { background: #e6f5ea; color: #16643c; }
   .chip.leave { background: #f0ece0; color: #6f560f; }
-  .chip.early { background: #fff6e0; color: #7c5200; }
+  .chip.late { background: #fff6e0; color: #7c5200; }
+  .chip.early { background: #fde5cd; color: #8a4b0c; }
+  .chip.miss { background: #fbe9e7; color: #9c3226; }
   .chip.exam { background: #eef2f8; color: #14315e; }
+  ul.cal { list-style: none; margin: 0; padding: 0; }
+  ul.cal li { border-left: 4px solid #14315e; padding-left: 12px; margin: 0 0 12px; font-size: 15px; color: #444; }
+  ul.cal strong { display: block; color: #222; }
   .banner {
     background: #eef2f8;
     color: #2a4d78;
@@ -170,11 +192,14 @@
   </header>
 
   <main>
-    <p class="muted">UTA/GTA Attendance Monitor is the digital system used by the Department of English to record the office-hours and attendance of Undergraduate and Graduate Teaching Assistants, handle leave applications, and monitor attendance.</p>
+    <p class="muted">UTA/GTA Attendance Monitor is the digital system used by the Department of English to record the office-hour attendance of Undergraduate and Graduate Teaching Assistants, handle leave applications, and monitor attendance.</p>
+
+    <div id="todayBanner" class="today" hidden></div>
+    <div id="noticeBox" class="notice" hidden></div>
 
     <a class="cta" href="https://script.google.com/a/macros/std.ewubd.edu/s/AKfycbweaR_eQzXjLAidTnnkVsekusg33TtajE4MOu6D3ZlQNYxbmOGhBnzZqq5FZTMUcr0x/exec" rel="noopener">Open the attendance app</a>
     <p class="note">Sign in with your East West University Google account.</p>
-    <p class="jump"><a href="#guidelines">Guidelines</a>|<a href="#find-ta">Find a TA</a></p>
+    <p class="jump"><a href="#guidelines">Guidelines</a><a href="#dashboard" id="jumpToday" hidden>Today</a><a href="#find-ta">Find a TA</a></p>
 
     <section id="guidelines">
       <h2 class="section-title">Guidelines for TAs</h2>
@@ -259,19 +284,19 @@
           <div class="box green">
             <strong>Do</strong>
             <ul>
-              <li>Check in and check out yourself, at the department office.</li>
+              <li>Check in and check out yourself at the department office.</li>
               <li>Use your own East West University Google account.</li>
               <li>Allow location access and keep it on High accuracy.</li>
               <li>Open the app in Chrome or Safari.</li>
-              <li>If you want to take a leave, apply before your office hour starts.</li>
+              <li>Apply for leave early, with a clear and short reason.</li>
               <li>Check out before you leave the office.</li>
-              <li>Immediately inform the coordinators or Daniel if something goes wrong.</li>
+              <li>Inform the coordinators or Daniel(2023-2-40-062@std.ewubd.edu) if something goes wrong.</li>
             </ul>
           </div>
           <div class="box red">
             <strong>Do not</strong>
             <ul>
-              <li>Check in or out for another TA, or let anyone use your account.</li>
+              <li>Check in or out for another TA, or let anyone use your account.</li
               <li>Sign in with a personal Gmail account.</li>
               <li>Forget to check out.</li>
               <li>Wait until the grace period is over to apply for leave.</li>
@@ -285,14 +310,42 @@
         <div class="gbody">
           <ul>
             <li><strong>Location is blocked:</strong> allow location for your browser in the phone settings, turn on High accuracy, then reload the page.</li>
-            <li><strong>Blank or white page:</strong> turn on and off the Airplane mode to reset your network settings. Then try to reload the page. Make sure only your university account is signed in.</li>
-            <li><strong>Wrong account:</strong> use a browser profile that has only your East West University account.</li>
+            <li><strong>Blank or white page:</strong> turn on and off the Airplane mode to reset your network settings. Then try to reload the page. Make sure you are signed in using your university gmail account.</li>
+            <li><strong>Wrong account:</strong> use a private window or a browser profile that has your East West University account.</li>
             <li><strong>The system is busy:</strong> wait a moment and tap again.If you see the same message again,close the tab and delete your recent cache data from the browser and try again.</li>
             <li><strong>You are too far from the office:</strong> move closer to the department office and try again.</li>
             <li><strong>Still stuck:</strong> contact the coordinators or the Senior Departmental Officer using the email at the bottom of this page.</li>
           </ul>
         </div>
       </details>
+
+      <details class="g">
+        <summary>Add the app to your home screen</summary>
+        <div class="gbody">
+          <p>Open the attendance app first, then add it to your home screen so you can start it with one tap.</p>
+          <p><strong>Android (Chrome)</strong></p>
+          <ol>
+            <li>Open the attendance app in Chrome.</li>
+            <li>Tap the three-dot menu.</li>
+            <li>Tap <strong>Add to Home screen</strong> (or <strong>Install app</strong>), then tap <strong>Add</strong>.</li>
+          </ol>
+          <p><strong>iPhone (Safari)</strong></p>
+          <ol>
+            <li>Open the attendance app in Safari.</li>
+            <li>Tap the <strong>Share</strong> button.</li>
+            <li>Tap <strong>Add to Home Screen</strong>, then tap <strong>Add</strong>.</li>
+          </ol>
+          <p>You may need to sign in again, and your browser will still ask for location access. If the icon opens a blank page, open the app link in your browser again.</p>
+        </div>
+      </details>
+    </section>
+
+    <section id="dashboard" hidden>
+      <h2 class="section-title">Today's TA attendance</h2>
+      <p class="muted" id="dashDate"></p>
+      <div class="summary" id="dashSummary"></div>
+      <div id="dashList"></div>
+      <p class="note" id="dashUpdated"></p>
     </section>
 
     <section id="find-ta">
@@ -304,10 +357,29 @@
         <button type="submit" id="searchBtn">Search</button>
       </form>
       <div id="results" aria-live="polite"></div>
-      <p class="note">Only today's office hours and a basic status are shown.</p>
+      <p class="note">Only today's office hours and a basic status are shown. Contact details and leave reasons are never shown.</p>
     </section>
 
-    <div class="banner">The attendance app is limited to registered UTAs, GTAs and TA coordinators of the Department of English.</div>
+    <section id="calendar" hidden>
+      <h2 class="section-title">Holidays and day swaps</h2>
+      <div id="calList"></div>
+    </section>
+
+    <section id="privacy">
+      <h2 class="section-title">Privacy</h2>
+      <details class="g">
+        <summary>Privacy and data</summary>
+        <div class="gbody">
+          <p><strong>What the attendance app records.</strong> Your name and university email, your check-in and check-out times, your location at the moment you check in or out, and a random device code that helps keep check-ins reliable. Your location is not tracked at any other time.</p>
+          <p><strong>Who can see it.</strong> TAs see only their own record. The TA coordinators and the system administrator can see all records. Leave reasons are visible only to the coordinators.</p>
+          <p><strong>What this public page shows.</strong> Today's office hours and a basic status for each scheduled TA, by name, such as Checked in, Late or On leave. It never shows emails, check-in times, locations or leave reasons.</p>
+          <p><strong>Visit statistics.</strong> This page counts visits with GoatCounter, which uses no cookies and does not track individual visitors.</p>
+          <p><strong>Questions or concerns.</strong> Contact the email at the bottom of this page.</p>
+        </div>
+      </details>
+    </section>
+
+    <div class="banner">The attendance app is limited to registered UTAs, GTAs and TA coordinators of the Department of English. Other visitors are asked to sign in and cannot open it.</div>
   </main>
 
   <footer>
@@ -323,12 +395,14 @@
 
   <script>
     (function () {
-      var SEARCH_URL = 'https://script.google.com/a/macros/std.ewubd.edu/s/AKfycbyLFxXs1hcpaZAwHZN-9zuLI51dmHiH8UhAf0G63uczgFToLuXOaxDXdc4Wgzg7KZCe/exec';
-      var form = document.getElementById('searchForm');
-      var input = document.getElementById('q');
-      var button = document.getElementById('searchBtn');
-      var out = document.getElementById('results');
+      var ENDPOINT = https://script.google.com/a/macros/std.ewubd.edu/s/AKfycbwA0StYPyp2MBXW_uDyflgb90frgPLhlruTxINYu677OWd5N2G2BAD5AkhI_rW5aODu/exec;
+      var COUNTER = danieldiganto;
+      var live = ENDPOINT.indexOf('http') === 0;
       var seq = 0;
+      var searchId = 0;
+      var loadedOnce = false;
+
+      function $(id) { return document.getElementById(id); }
 
       function esc(value) {
         return String(value).replace(/[&<>"']/g, function (c) {
@@ -336,45 +410,9 @@
         });
       }
 
-      function show(html) {
-        out.innerHTML = html;
-      }
-
-      function message(text) {
-        show('<p class="msg">' + esc(text) + '</p>');
-      }
-
-      function chipClass(status) {
-        if (status === 'Checked in' || status === 'Checked out') return 'chip ok';
-        if (status === 'On leave') return 'chip leave';
-        if (status === 'Left early') return 'chip early';
-        if (status === 'On exam duty') return 'chip exam';
-        return 'chip';
-      }
-
-      function render(data) {
-        if (!data || !data.ok) {
-          message((data && data.message) || 'Search is unavailable right now. Please try again later.');
-          return;
-        }
-        var html = '<p class="date">' + esc(data.date) + '</p>';
-        if (data.message) html += '<p class="msg">' + esc(data.message) + '</p>';
-        (data.results || []).forEach(function (r) {
-          html += '<div class="result"><div class="rname">' + esc(r.name) + '</div>';
-          if (r.hours) html += '<div class="rhours">' + esc(r.hours) + '</div>';
-          if (r.status) html += '<span class="' + chipClass(r.status) + '">' + esc(r.status) + '</span>';
-          html += '</div>';
-        });
-        show(html);
-      }
-
-      function search(q) {
-        if (SEARCH_URL.indexOf('http') !== 0) {
-          message('Search is not available yet.');
-          return;
-        }
+      function jsonp(params, onData, onFail) {
         var id = ++seq;
-        var cb = '__taSearch' + id + '_' + new Date().getTime();
+        var cb = '__ta' + id + '_' + new Date().getTime();
         var script = document.createElement('script');
         var done = false;
         var timer;
@@ -382,39 +420,184 @@
         function finish() {
           done = true;
           clearTimeout(timer);
-          button.disabled = false;
           try { delete window[cb]; } catch (e) { window[cb] = undefined; }
           if (script.parentNode) script.parentNode.removeChild(script);
-        }
-
-        function fail() {
-          if (done) return;
-          finish();
-          if (id === seq) message('Search is unavailable right now. Please try again later.');
         }
 
         window[cb] = function (data) {
           if (done) return;
           finish();
-          if (id === seq) render(data);
+          onData(data);
         };
-        script.onerror = fail;
-        timer = setTimeout(fail, 15000);
-        button.disabled = true;
-        script.src = SEARCH_URL + (SEARCH_URL.indexOf('?') === -1 ? '?' : '&') + 'mode=search&q=' + encodeURIComponent(q) + '&callback=' + cb;
+        script.onerror = function () {
+          if (done) return;
+          finish();
+          onFail();
+        };
+        timer = setTimeout(function () {
+          if (done) return;
+          finish();
+          onFail();
+        }, 15000);
+        script.src = ENDPOINT + (ENDPOINT.indexOf('?') === -1 ? '?' : '&') + params + '&callback=' + cb;
         document.body.appendChild(script);
+      }
+
+      function chipClass(status) {
+        if (status === 'Checked in' || status === 'Checked out') return 'chip ok';
+        if (status === 'On leave') return 'chip leave';
+        if (status === 'Late') return 'chip late';
+        if (status === 'Left early') return 'chip early';
+        if (status === 'Not checked in') return 'chip miss';
+        if (status === 'On exam duty') return 'chip exam';
+        return 'chip';
+      }
+
+      function card(r) {
+        var html = '<div class="result"><div class="rname">' + esc(r.name) + '</div>';
+        if (r.hours) html += '<div class="rhours">' + esc(r.hours) + '</div>';
+        if (r.status) html += '<span class="' + chipClass(r.status) + '">' + esc(r.status) + '</span>';
+        if (r.late) html += ' <span class="chip late">Late</span>';
+        return html + '</div>';
+      }
+
+      var form = $('searchForm');
+      var input = $('q');
+      var button = $('searchBtn');
+      var results = $('results');
+
+      function searchMessage(text) {
+        results.innerHTML = '<p class="msg">' + esc(text) + '</p>';
+      }
+
+      function renderSearch(data) {
+        if (!data || !data.ok) {
+          searchMessage((data && data.message) || 'Search is unavailable right now. Please try again later.');
+          return;
+        }
+        var html = '<p class="date">' + esc(data.date) + '</p>';
+        if (data.message) html += '<p class="msg">' + esc(data.message) + '</p>';
+        (data.results || []).forEach(function (r) { html += card(r); });
+        results.innerHTML = html;
       }
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         var q = input.value.replace(/\s+/g, ' ').trim();
         if (q.length < 3) {
-          message('Please type at least 3 letters of the name.');
+          searchMessage('Please type at least 3 letters of the name.');
           return;
         }
-        message('Searching...');
-        search(q);
+        if (!live) {
+          searchMessage('Search is not available yet.');
+          return;
+        }
+        var mine = ++searchId;
+        searchMessage('Searching...');
+        button.disabled = true;
+        jsonp('mode=search&q=' + encodeURIComponent(q), function (data) {
+          if (mine !== searchId) return;
+          button.disabled = false;
+          renderSearch(data);
+        }, function () {
+          if (mine !== searchId) return;
+          button.disabled = false;
+          searchMessage('Search is unavailable right now. Please try again later.');
+        });
       });
+
+      function renderDashboard(data) {
+        var section = $('dashboard');
+        var jump = $('jumpToday');
+        var dash = data.dashboard;
+        if (!dash) {
+          section.hidden = true;
+          jump.hidden = true;
+          return;
+        }
+        section.hidden = false;
+        jump.hidden = false;
+        $('dashDate').textContent = data.date;
+        var s = dash.summary || {};
+        var chips = '<span class="sum"><b>' + (s.total || 0) + '</b> scheduled</span>' +
+          '<span class="sum"><b>' + (s.present || 0) + '</b> present</span>' +
+          '<span class="sum"><b>' + (s.late || 0) + '</b> late</span>' +
+          '<span class="sum"><b>' + (s.onLeave || 0) + '</b> on leave</span>' +
+          '<span class="sum"><b>' + (s.notYet || 0) + '</b> not checked in</span>';
+        if (s.exam) chips += '<span class="sum"><b>' + s.exam + '</b> on exam duty</span>';
+        $('dashSummary').innerHTML = chips;
+        var rows = dash.rows || [];
+        if (!rows.length) {
+          $('dashList').innerHTML = '<p class="msg">No office hours are scheduled today.</p>';
+        } else {
+          var html = '';
+          rows.forEach(function (r) { html += card(r); });
+          $('dashList').innerHTML = html;
+        }
+        $('dashUpdated').textContent = 'Updated ' + data.updatedAt + '. This list refreshes automatically.';
+      }
+
+      function renderCalendar(list) {
+        var html;
+        if (!list.length) {
+          html = '<p class="msg">No upcoming holidays or day swaps.</p>';
+        } else {
+          html = '<ul class="cal">';
+          list.forEach(function (c) {
+            html += '<li><strong>' + esc(c.date) + '</strong>' + esc(c.text) + '</li>';
+          });
+          html += '</ul>';
+        }
+        $('calList').innerHTML = html;
+        $('calendar').hidden = false;
+      }
+
+      function renderToday(data) {
+        if (!data || !data.ok) {
+          var section = $('dashboard');
+          section.hidden = false;
+          $('dashSummary').innerHTML = '';
+          $('dashList').innerHTML = '<p class="msg">Live information is unavailable right now. Please try again later.</p>';
+          return;
+        }
+        var banner = $('todayBanner');
+        banner.className = 'today ' + data.banner.type;
+        banner.innerHTML = '<strong>' + esc(data.date) + '</strong>' + esc(data.banner.text);
+        banner.hidden = false;
+        var notice = $('noticeBox');
+        if (data.notice) {
+          notice.innerHTML = '<strong>Notice</strong>' + esc(data.notice);
+          notice.hidden = false;
+        } else {
+          notice.hidden = true;
+        }
+        renderCalendar(data.calendar || []);
+        renderDashboard(data);
+      }
+
+      function loadToday() {
+        jsonp('mode=today', function (data) {
+          loadedOnce = true;
+          renderToday(data);
+        }, function () {
+          if (!loadedOnce) renderToday(null);
+        });
+      }
+
+      if (live) {
+        loadToday();
+        setInterval(function () {
+          if (document.visibilityState !== 'hidden') loadToday();
+        }, 120000);
+      }
+
+      if (COUNTER.indexOf('YOUR-') !== 0) {
+        var gc = document.createElement('script');
+        gc.async = true;
+        gc.src = 'https://gc.zgo.at/count.js';
+        gc.setAttribute('data-goatcounter', 'https://' + COUNTER + '.goatcounter.com/count');
+        document.body.appendChild(gc);
+      }
     })();
   </script>
 </body>
